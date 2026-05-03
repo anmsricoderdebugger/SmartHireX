@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart AI Recruitment</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+
+    <!-- ══════════ NAVBAR ══════════ -->
+    <nav class="navbar">
+        <div class="nav-brand" onclick="showSection('landing')">
+            <span class="nav-logo">🧠</span>
+            <span class="nav-title">Smart AI Recruitment</span>
+        </div>
+        <div class="nav-right">
+            <div style="display:flex; align-items:center; gap:8px; margin-right:16px;">
+                <span style="font-size:13px; color:#94a3b8;">{{ user.name }}</span>
+                <a href="/auth/logout" style="font-size:12px; color:#f87171; text-decoration:none;">Logout</a>
+            </div>
+            <div class="nav-menu-trigger" onclick="toggleNavMenu()">
+                <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            </div>
+            <div class="nav-dropdown" id="navDropdown">
+                <div class="dropdown-header">Recruitment Stages</div>
+                <div class="dropdown-item active-item" onclick="showSection('jd-creator')">
+                    <span class="stage-icon">📝</span>
+                    <div>
+                        <strong>JD Creator & Enhancer</strong>
+                        <small>Create and optimize job descriptions</small>
+                    </div>
+                </div>
+                <div class="dropdown-item active-item" onclick="showSection('cv-parser')">
+                    <span class="stage-icon">📄</span>
+                    <div>
+                        <strong>CV Parser & Screener</strong>
+                        <small>Screen and rank candidates</small>
+                    </div>
+                </div>
+                <div>
+                    <div class="dropdown-item active-item" onclick="showSection('cv-parser-ats')">
+                        <span class="stage-icon">📄</span>
+                            <div>
+                                <strong>CV Parser & ATS</strong>
+                                <small>Optimize CVs for Applicant Tracking Systems</small>
+                            </div>
+                    </div>
+                </div>
+                <div class="dropdown-item disabled-item">
+                    <span class="stage-icon">📞</span>
+                    <div>
+                        <strong>Phone Screening</strong>
+                        <small>Coming soon</small>
+                    </div>
+                </div>
+                <div class="dropdown-item disabled-item">
+                    <span class="stage-icon">📋</span>
+                    <div>
+                        <strong>Assessment</strong>
+                        <small>Coming soon</small>
+                    </div>
+                </div>
+                <div class="dropdown-item disabled-item">
+                    <span class="stage-icon">🎙️</span>
+                    <div>
+                        <strong>AI Interview</strong>
+                        <small>Coming soon</small>
+                    </div>
+                </div>
+                <div class="dropdown-item disabled-item">
+                    <span class="stage-icon">🔍</span>
+                    <div>
+                        <strong>BGV Agent</strong>
+                        <small>Coming soon</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ══════════ LANDING PAGE ══════════ -->
+    <section id="section-landing" class="page-section active-section">
+        <div class="landing-hero">
+            <h1>Intelligent Recruitment,<br><span class="gradient-text">Powered by AI</span></h1>
+            <p class="hero-subtitle">Streamline your entire hiring pipeline — from crafting the perfect job description to onboarding verified candidates. Six AI-powered stages, one unified platform.</p>
+            <button class="cta-btn" onclick="showSection('jd-creator')">Get Started →</button>
+        </div>
+        <div class="stages-grid">
+            <div class="stage-card clickable" onclick="showSection('jd-creator')">
+                <div class="stage-number">1</div>
+                <span class="stage-card-icon">📝</span>
+                <h3>JD Creator & Enhancer</h3>
+                <p>Upload a base JD or answer AI-generated questions to create a professional job description. Enhance it with one click.</p>
+                <span class="stage-badge live">Live</span>
+            </div>
+            <div class="stage-card clickable" onclick="showSection('cv-parser')">
+                <div class="stage-number">2</div>
+                <span class="stage-card-icon">📄</span>
+                <h3>CV Parser & Screener</h3>
+                <p>Upload multiple CVs against a JD. AI scores, ranks, and identifies strengths, gaps, and proximity matches.</p>
+                <span class="stage-badge live">Live</span>
+            </div>
+            <div class="stage-card clickable" onclick="showSection('cv-parser-ats')">
+                <div class="stage-number">2.5</div>
+                <span class="stage-card-icon">📄</span>
+                <h3>CV Parser & Screener Using ATS</h3>
+                <p>Upload multiple CVs against a JD. AI scores, ranks, and identifies strengths, gaps, and proximity matches.</p>
+                <span class="stage-badge live">Live</span>
+            </div>
+            <div class="stage-card">
+                <div class="stage-number">3</div>
+                <span class="stage-card-icon">📞</span>
+                <h3>Phone Screening</h3>
+                <p>AI-powered phone screening with dynamic questions based on the role and candidate profile.</p>
+                <span class="stage-badge upcoming">Coming Soon</span>
+            </div>
+            <div class="stage-card">
+                <div class="stage-number">4</div>
+                <span class="stage-card-icon">📋</span>
+                <h3>Assessment</h3>
+                <p>Generate technical assessments and MCQs dynamically. Evaluate candidates with adaptive difficulty.</p>
+                <span class="stage-badge upcoming">Coming Soon</span>
+            </div>
+            <div class="stage-card">
+                <div class="stage-number">5</div>
+                <span class="stage-card-icon">🎙️</span>
+                <h3>AI Interview</h3>
+                <p>Conduct AI-driven interviews with real-time follow-ups, STAR evaluation, and behavioral analysis.</p>
+                <span class="stage-badge upcoming">Coming Soon</span>
+            </div>
+            <div class="stage-card">
+                <div class="stage-number">6</div>
+                <span class="stage-card-icon">🔍</span>
+                <h3>BGV Agent</h3>
+                <p>Automated background verification with document parsing, status tracking, and alerts.</p>
+                <span class="stage-badge upcoming">Coming Soon</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════ JD CREATOR & ENHANCER ══════════ -->
+    <section id="section-jd-creator" class="page-section">
+        <div class="section-header">
+            <h2>📝 JD Creator & Enhancer</h2>
+            <p>Create a professional job description from scratch or enhance an existing one.</p>
+        </div>
+
+        <!-- Step 1: Choose mode -->
+        <div class="mode-selector" id="jdModeSelector">
+            <div class="mode-card" onclick="setJDMode('upload')">
+                <span class="mode-icon">📤</span>
+                <h3>Upload Base JD</h3>
+                <p>Upload an existing JD and let AI generate MCQs to refine it</p>
+            </div>
+            <div class="mode-card" onclick="setJDMode('manual')">
+                <span class="mode-icon">✍️</span>
+                <h3>Create from Scratch</h3>
+                <p>Answer AI-generated questions to build a JD from the ground up</p>
+            </div>
+        </div>
+
+        <!-- Step 2a: Upload mode — file upload + MCQs -->
+        <div id="jdUploadFlow" class="jd-flow" style="display:none;">
+            <div class="flow-card">
+                <h3>📤 Upload Your Base JD</h3>
+                <input type="file" id="jdBaseFileInput" accept=".pdf,.docx,.doc" class="file-input" onchange="validateFileOnUpload(this, 'JD')">
+                <button class="btn-primary" onclick="generateMCQsFromJD()">Generate MCQs from JD →</button>
+                <div id="jdUploadLoading" class="loader" style="display:none;">
+                    <div class="spinner"></div>
+                    <span>Analyzing JD and generating questions...</span>
+                </div>
+            </div>
+            <div id="jdMCQContainer" style="display:none;"></div>
+        </div>
+
+        <!-- Step 2b: Manual mode — direct questions -->
+        <div id="jdManualFlow" class="jd-flow" style="display:none;">
+            <div class="flow-card">
+                <h3>✍️ Tell us about the role</h3>
+                <div class="manual-fields">
+                    <div class="field-group">
+                        <label>Job Title *</label>
+                        <input type="text" id="manualJobTitle" placeholder="e.g., Senior Software Engineer">
+                    </div>
+                    <div class="field-group">
+                        <label>Department</label>
+                        <input type="text" id="manualDepartment" placeholder="e.g., Engineering, Marketing">
+                    </div>
+                    <div class="field-group">
+                        <label>Location</label>
+                        <input type="text" id="manualLocation" placeholder="e.g., Noida, Remote, Hybrid">
+                    </div>
+                    <div class="field-group">
+                        <label>Experience Required</label>
+                        <input type="text" id="manualExperience" placeholder="e.g., 5-8 years">
+                    </div>
+                    <div class="field-group full-width">
+                        <label>Key Responsibilities (brief)</label>
+                        <textarea id="manualResponsibilities" rows="3" placeholder="What will this person do day-to-day?"></textarea>
+                    </div>
+                    <div class="field-group full-width">
+                        <label>Must-Have Skills</label>
+                        <textarea id="manualSkills" rows="2" placeholder="e.g., Python, React, AWS, Team Leadership"></textarea>
+                    </div>
+                    <div class="field-group full-width">
+                        <label>Additional Notes / Special Requirements</label>
+                        <textarea id="manualNotes" rows="2" placeholder="Any other details the AI should consider..."></textarea>
+                    </div>
+                </div>
+                <button class="btn-primary" onclick="createJDFromManual()">Generate JD →</button>
+                <div id="jdManualLoading" class="loader" style="display:none;">
+                    <div class="spinner"></div>
+                    <span>Creating your job description...</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Created JD View -->
+        <div id="jdCreatedView" class="jd-result-view" style="display:none;">
+            <div class="result-header-bar">
+                <h3>✅ Job Description Created</h3>
+                <div class="result-actions">
+                    <div class="action-menu-trigger" onclick="toggleJDActions()">
+                        <span class="dot-sm"></span><span class="dot-sm"></span><span class="dot-sm"></span>
+                    </div>
+                    <div class="action-dropdown" id="jdActionDropdown">
+                        <div class="action-item" onclick="downloadJD('docx')">📄 Download as DOCX</div>
+                        <div class="action-item" onclick="downloadJD('pdf')">📑 Download as PDF</div>
+                    </div>
+                </div>
+            </div>
+            <div id="jdCreatedContent" class="jd-content-box"></div>
+
+            <!-- Enhance CTA -->
+            <div class="enhance-cta">
+                <span>Want to enhance this JD?</span>
+                <span class="enhance-arrow" onclick="showEnhanceOptions()">→</span>
+            </div>
+
+            <!-- Enhance Options -->
+            <div id="jdEnhanceOptions" style="display:none;">
+                <div class="mode-selector compact">
+                    <div class="mode-card small" onclick="setEnhanceMode('options')">
+                        <span class="mode-icon">🎯</span>
+                        <h4>Enhance via Options</h4>
+                        <p>AI suggests improvement areas</p>
+                    </div>
+                    <div class="mode-card small" onclick="setEnhanceMode('manual')">
+                        <span class="mode-icon">✍️</span>
+                        <h4>Manual Instructions</h4>
+                        <p>Tell AI what to change</p>
+                    </div>
+                </div>
+                <!-- Enhancement input area -->
+                <div id="enhanceInputArea" style="display:none;">
+                    <textarea id="enhanceInstructions" rows="3" placeholder="e.g., Make the tone more aggressive, add remote work policy, emphasize leadership skills..."></textarea>
+                    <button class="btn-primary" onclick="runEnhancement()">Enhance JD →</button>
+                    <div id="enhanceLoading" class="loader" style="display:none;">
+                        <div class="spinner"></div>
+                        <span>Enhancing your JD...</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Enhanced JD View -->
+            <div id="jdEnhancedView" style="display:none;">
+                <div class="result-header-bar enhanced">
+                    <h3>✨ Enhanced Job Description</h3>
+                    <div class="result-actions">
+                        <div class="action-menu-trigger" onclick="toggleEnhancedActions()">
+                            <span class="dot-sm"></span><span class="dot-sm"></span><span class="dot-sm"></span>
+                        </div>
+                        <div class="action-dropdown" id="enhancedActionDropdown">
+                            <div class="action-item" onclick="downloadEnhancedJD('docx')">📄 Download as DOCX</div>
+                            <div class="action-item" onclick="downloadEnhancedJD('pdf')">📑 Download as PDF</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="enhanced-badge">🔄 Enhanced sections are highlighted below</div>
+                <div id="jdEnhancedContent" class="jd-content-box enhanced-box"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════ CV PARSER & SCREENER ══════════ -->
+    <section id="section-cv-parser" class="page-section">
+        <div class="section-header">
+            <h2>📄 CV Parser & Screener</h2>
+            <p>Upload a JD and multiple CVs to get AI-powered screening results.</p>
+        </div>
+
+        <div class="cv-upload-grid">
+            <div class="upload-box">
+                <div class="upload-icon-lg">📋</div>
+                <h3>Target JD</h3>
+                <p>The job you are hiring for</p>
+                <input type="file" id="cvJdFileInput" accept=".pdf,.docx,.doc" class="file-input" onchange="validateFileOnUpload(this, 'JD')">
+            </div>
+            <div class="upload-box">
+                <div class="upload-icon-lg">👥</div>
+                <h3>Candidate Resumes</h3>
+                <p>Upload multiple CVs (PDF/DOC/DOCX)</p>
+                <input type="file" id="cvFilesInput" accept=".pdf,.docx,.doc" multiple class="file-input" onchange="validateMultipleFiles(this, 'CV')">
+            </div>
+        </div>
+        <div class="field-group full-width" style="margin-top:15px;">
+            <label>Recruiter Notes (optional)</label>
+            <textarea id="cvScreeningNotes" rows="2" placeholder="e.g., Must have 5+ years in FinTech, prefer candidates from Tier-1 colleges..."></textarea>
+        </div>
+        <button class="btn-primary" onclick="runCVScreeningManual()" style="margin-top:15px;">🔍 Screen Candidates</button>
+
+        <div id="cvScreeningResults" style="display:none;">
+            <div id="cvResultsLoading" class="loader" style="display:none;">
+                <div class="spinner"></div>
+                <span>Screening candidates...</span>
+            </div>
+            <div id="cvResultsContainer"></div>
+            <button id="cvDownloadBtn" class="btn-secondary" style="display:none;" onclick="downloadCVReport()">📥 Download Audit Report (PDF)</button>
+        </div>
+    </section>
+
+
+    <!-- ══════════ CV PARSER & SCREENER WITH CEIPAL ATS ══════════ -->
+    <section id="section-cv-parser-ats" class="page-section">
+        <div class="section-header">
+            <h2>📄 CV Parser & Screener</h2>
+            <p>Paste JD and auto-fetch candidates from CEIPAL</p>
+        </div>
+
+        <!-- JD TEXT INPUT -->
+        <div class="field-group full-width">
+            <label>Enter Job Code</label>
+            <input type="text" id="jobCodeInput" placeholder="e.g. Job Code-729">
+        </div>
+
+        <div class="field-group full-width" style="margin-top:15px;">
+            <label>Recruiter Notes (optional)</label>
+            <textarea id="atsScreeningNotes" rows="2" placeholder="e.g., Must have 5+ years in FinTech..."></textarea>
+        </div>
+
+        <button class="btn-primary" onclick="runCVScreeningATS()" style="margin-top:15px;">
+            🔍 Fetch & Screen Candidates
+        </button>
+
+        <div id="jdModal" class="jd-modal">
+            <div class="jd-modal-content">
+                <span class="close-btn" onclick="closeJDModal()">✖</span>
+                <div id="jdContent"></div>
+            </div>
+        </div>
+
+        <div id="atsScreeningResults" style="display:none;">
+            <div id="atsResultsLoading" class="loader" style="display:none;">
+                <div class="spinner"></div>
+                <span>Fetching & Screening candidates...</span>
+            </div>
+            <div id="atsResultsContainer"></div>
+        </div>
+    </section>
+
+    <!-- Add this just before the <script> tags at the bottom of index.html -->
+
+    <!-- Global Modal -->
+    <div class="modal-overlay" id="globalModal" style="display:none;" onclick="closeModal(event)">
+        <div class="modal-box">
+            <div class="modal-header" id="modalTitle">⚠️ Alert</div>
+            <div class="modal-body" id="modalBody">Something went wrong.</div>
+            <button class="btn-primary" onclick="document.getElementById('globalModal').style.display='none'">OK</button>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../static/js/app.js"></script>
+    <script src="../static/js/cv-parser.js"></script>
+    <script src="../static/js/jd-creator.js"></script>
+    <!--<script src="../static/js/cv-parser-ats.js"></script>-->
+</body>
+</html>

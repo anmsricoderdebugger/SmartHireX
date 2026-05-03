@@ -1,0 +1,10 @@
+flask
+google-cloud-aiplatform
+pypdf
+python-docx
+google-auth
+fpdf2
+flask-login
+authlib
+beautifulsoup4
+python-dotenv
